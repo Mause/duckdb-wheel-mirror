@@ -1,0 +1,20 @@
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: manylinux2014_x86_64
+
+    strategy:
+      fail-fast: false
+      matrix:
+          duckdb_version: [0.5.0]
+          python_version: ['36', '310', '311']
+
+    steps:
+      - run: python -m ${{ matrix.python_version }} pip install pip wheel -U
+      - run: python -m ${{ matrix.python_version }} pip wheel duckdb${{ matrix.duckdb_version }} --wheel-dir wheels
+      - uses: actions/upload-artifact
+        with:
+          name: wheels
+          path: wheels/*.whl
