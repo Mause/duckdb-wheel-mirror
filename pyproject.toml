@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "duckdb-wheel-mirror"
+version = "0.1.0"
+description = ""
+authors = ["Elliana May <me@mause.me>"]
+readme = "README.md"
+packages = [{include = "duckdb_wheel_mirror"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+python-pypi-mirror = "^5.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

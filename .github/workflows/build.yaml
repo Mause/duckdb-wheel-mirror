@@ -19,3 +19,32 @@ jobs:
         with:
           name: wheels
           path: wheels/*.whl
+
+  upload:
+    runs-on: ubuntu-latest
+    needs: [build]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: wheels
+          path: download
+
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: download
+
+      - run: pip install python-pypi-mirror
+
+      - uses: technote-space/create-pr-action@v2
+        with:
+          EXECUTE_COMMANDS: |
+            pypi-mirror create-metadata --download-dir download
+          COMMIT_MESSAGE: "chore: auto update"
+          COMMIT_NAME: "GitHub Actions"
+          COMMIT_EMAIL: "example@example.com"
+          PR_BRANCH_NAME: "chore-update-${PR_ID}"
+          PR_TITLE: "chore: auto update"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

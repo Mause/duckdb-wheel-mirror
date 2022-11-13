@@ -1,0 +1,18 @@
+[[package]]
+name = "python-pypi-mirror"
+version = "5.0.1"
+description = "A script to create a partial PyPI mirror"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.10"
+content-hash = "861a381dc15a174f7f5b2a70b496a2144a3c7238067da84f3304afe155ecad27"
+
+[metadata.files]
+python-pypi-mirror = [
+    {file = "python-pypi-mirror-5.0.1.tar.gz", hash = "sha256:e0182ec7268d357d1672ad7486f24c711bbecb60a6425f740580f381a0fa32c7"},
+    {file = "python_pypi_mirror-5.0.1-py3-none-any.whl", hash = "sha256:54e64ca46ef49e7c72f4baa2b52513c42537f0e84c81238df8862f949921618d"},
+]
