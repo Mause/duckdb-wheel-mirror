@@ -13,7 +13,8 @@ jobs:
 
     steps:
       - run: python${{ matrix.python_version }} -m pip install pip wheel oldest-supported-numpy -U
-      - run: python${{ matrix.python_version }} -m pip wheel duckdb==${{ matrix.duckdb_version }} --wheel-dir wheels
+      - run: |
+          python${{ matrix.python_version }} -m pip wheel duckdb==${{ matrix.duckdb_version }} --wheel-dir wheels --no-binary :all:
       - uses: actions/upload-artifact@v3
         with:
           name: wheels
