@@ -12,8 +12,8 @@ jobs:
           python_version: ['36', '310', '311']
 
     steps:
-      - run: python -m ${{ matrix.python_version }} pip install pip wheel -U
-      - run: python -m ${{ matrix.python_version }} pip wheel duckdb${{ matrix.duckdb_version }} --wheel-dir wheels
+      - run: python${{ matrix.python_version }} -m pip install pip wheel -U
+      - run: python${{ matrix.python_version }} -m pip wheel duckdb@${{ matrix.duckdb_version }} --wheel-dir wheels
       - uses: actions/upload-artifact@v3
         with:
           name: wheels
