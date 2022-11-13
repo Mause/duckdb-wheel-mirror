@@ -12,7 +12,7 @@ jobs:
           python_version: ['3.6', '3.10', '3.11']
 
     steps:
-      - run: python${{ matrix.python_version }} -m pip install pip wheel -U
+      - run: python${{ matrix.python_version }} -m pip install pip wheel oldest-supported-numpy -U
       - run: python${{ matrix.python_version }} -m pip wheel duckdb==${{ matrix.duckdb_version }} --wheel-dir wheels
       - uses: actions/upload-artifact@v3
         with:
