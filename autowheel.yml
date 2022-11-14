@@ -1,5 +1,6 @@
 - package_name: duckdb
   pin_numpy: true
+  test_command: python3 -c "import duckdb"
   python_versions:
     '0.4.0':
       - cp36
