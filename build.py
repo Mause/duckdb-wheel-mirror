@@ -6,7 +6,7 @@ duckdb_version, python_version = sys.argv[1:]
 
 process(
     package_name='duckdb',
-    platform_tag=PLATFORM_TAGS['linux64'],
+    platform_tag='*linux*',
     before_build='pip install oldest-supported-numpy',
     test_command='python3 -c "import duckdb"',
     test_requires=[],
