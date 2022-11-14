@@ -1,6 +1,7 @@
 - package_name: duckdb
-  pin_numpy: true
+  before_build: pip install oldest-supported-numpy
   test_command: python3 -c "import duckdb"
+  test_requires: []
   python_versions:
     '0.4.0':
       - cp36
