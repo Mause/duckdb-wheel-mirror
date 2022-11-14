@@ -5,11 +5,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        python: [py36, py310]
+        duckdb: ['0.5.0']
+
     steps:
       - uses: actions/checkout@v2
       - run: pip install pip wheel git+https://github.com/astrofrog/autowheel -U
       - run: mkdir wheels
-      - run: autowheel linux64 --output-dir wheels
+      - run: python3 build.py ${{ matrix.duckdb }} 
+${{ matrix.python }}
       - uses: actions/upload-artifact@v3
         with:
           name: wheels
