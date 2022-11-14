@@ -20,7 +20,8 @@ jobs:
     steps:
       - uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python_version.long || matrix.python_version.short }}
+          python-version: ${{ matrix.python_version.short }}
+          check-latest: true
       - run: python${{ matrix.python_version.short }} -m pip install pip wheel oldest-supported-numpy -U
       - run: |
           python${{ matrix.python_version.short }} -m pip wheel duckdb==${{ matrix.duckdb_version }} --wheel-dir wheels --no-binary :all:
