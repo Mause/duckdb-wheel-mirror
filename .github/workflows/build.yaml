@@ -4,18 +4,10 @@ name: Update mirror
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: quay.io/pypa/manylinux2014_x86_64
-
-    strategy:
-      fail-fast: false
-      matrix:
-          duckdb_version: ['0.4.0', '0.5.1']
-          python_version: ['3.6', '3.10', '3.11']
 
     steps:
-      - run: python${{ matrix.python_version }} -m pip install pip wheel oldest-supported-numpy -U
-      - run: |
-          python${{ matrix.python_version }} -m pip wheel duckdb==${{ matrix.duckdb_version }} --wheel-dir wheels --no-binary :all:
+      - run: pip install pip wheel git+https://github.com/astrofrog/autowheel -U
+      - run: autowheel linux --output-dir wheels
       - uses: actions/upload-artifact@v3
         with:
           name: wheels
