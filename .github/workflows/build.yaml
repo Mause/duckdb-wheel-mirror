@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
           duckdb_version: ['0.4.0', '0.5.1']
-          python_version: ['3.6', '3.10', '3.11', '3.12']
+          python_version: ['3.6', '3.10', '3.11']
 
     steps:
       - run: python${{ matrix.python_version }} -m pip install pip wheel oldest-supported-numpy -U
