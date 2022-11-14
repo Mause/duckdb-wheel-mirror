@@ -8,7 +8,7 @@ jobs:
     steps:
       - run: pip install pip wheel git+https://github.com/astrofrog/autowheel -U
       - run: mkdir wheels
-      - run: autowheel linux --output-dir wheels
+      - run: autowheel linux64 --output-dir wheels
       - uses: actions/upload-artifact@v3
         with:
           name: wheels
