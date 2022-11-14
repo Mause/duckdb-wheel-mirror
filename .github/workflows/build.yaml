@@ -15,12 +15,12 @@ jobs:
             - short: '3.10'
             - short: '3.11'
             - short: '3.12'
-              long: '3.12.0-alpha.1'
+              long: '3.12-dev'
 
     steps:
       - uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python_version.short }}
+          python-version: ${{ matrix.python_version.long || matrix.python_version.short }}
           check-latest: true
       - run: python${{ matrix.python_version.short }} -m pip install pip wheel oldest-supported-numpy -U
       - run: |
