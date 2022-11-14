@@ -10,12 +10,20 @@ jobs:
       fail-fast: false
       matrix:
           duckdb_version: [0.5.0]
-          python_version: ['3.6', '3.10', '3.11', '3.12']
+          python_version:
+            - short: '3.6'
+            - short: '3.10'
+            - short: '3.11'
+            - short: '3.12'
+              long: '3.12.0-alpha.1'
 
     steps:
-      - run: python${{ matrix.python_version }} -m pip install pip wheel oldest-supported-numpy -U
+      - uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python_version.long || matrix.python_version.short }}
+      - run: python${{ matrix.python_version.short }} -m pip install pip wheel oldest-supported-numpy -U
       - run: |
-          python${{ matrix.python_version }} -m pip wheel duckdb==${{ matrix.duckdb_version }} --wheel-dir wheels --no-binary :all:
+          python${{ matrix.python_version.short }} -m pip wheel duckdb==${{ matrix.duckdb_version }} --wheel-dir wheels --no-binary :all:
       - uses: actions/upload-artifact@v3
         with:
           name: wheels
