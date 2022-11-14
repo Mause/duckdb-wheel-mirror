@@ -1,4 +1,5 @@
 on: [workflow_dispatch]
+name: Update mirror
 
 jobs:
   build:
@@ -42,6 +43,7 @@ jobs:
         with:
           EXECUTE_COMMANDS: |
             pypi-mirror write-metadata --download-dir download
+            pypi-mirror create --download-dir download --mirror-dir mirror
           COMMIT_MESSAGE: "chore: auto update"
           COMMIT_NAME: "GitHub Actions"
           COMMIT_EMAIL: "example@example.com"
