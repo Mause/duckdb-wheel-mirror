@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
       - run: pip install pip wheel git+https://github.com/astrofrog/autowheel -U
       - run: mkdir wheels
       - run: autowheel linux64 --output-dir wheels
