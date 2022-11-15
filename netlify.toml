@@ -1,2 +1,2 @@
 [build]
-command = 'python3 resolve_links.py'
+command = 'cd .. && python3 resolve_links.py'
