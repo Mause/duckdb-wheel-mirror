@@ -1,8 +1,11 @@
+import os
 from autowheel.autowheel import process
 from autowheel.config import PLATFORM_TAGS
 import sys
 
 duckdb_version, python_version = sys.argv[1:]
+
+os.environ['CIBW_ARCHS'] = 'native'
 
 process(
     package_name='duckdb',
