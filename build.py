@@ -9,7 +9,7 @@ process(
     platform_tag='*manylinux2014_x86_64',
     before_build='pip install oldest-supported-numpy',
     test_command='python3 -c "import duckdb"',
-    test_requires=['numpy'],
+    test_requires='numpy',
     output_dir='wheels',
     python_versions={duckdb_version: [python_version]}
 )
