@@ -15,11 +15,12 @@ jobs:
       - run: pip install pip wheel git+https://github.com/astrofrog/autowheel -U
       - run: mkdir wheels
       - run: python3 build.py ${{ matrix.duckdb }} ${{ matrix.python }}
-      - run: ls
+      - run: ls -R
       - uses: actions/upload-artifact@v3
         with:
           name: wheels
-          path: '*.whl'
+          path: 'wheels/*.whl'
+          if-no-files-found: error
 
   upload:
     runs-on: ubuntu-latest
