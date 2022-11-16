@@ -7,7 +7,7 @@ jobs:
 
     strategy:
       matrix:
-        python: [cp36, cp310]
+        python: [cp36, cp310, cp311]
         duckdb: ['0.5.0']
 
     steps:
