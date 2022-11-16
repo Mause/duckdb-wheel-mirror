@@ -3,6 +3,7 @@ import sys
 import tarfile
 import tempfile
 from fnmatch import fnmatch
+from pathlib import Path
 
 import requests
 from autowheel.config import PYTHON_TAGS
@@ -135,7 +136,7 @@ def main():
         before_build='pip install oldest-supported-numpy',
         test_command='python3 -c "import duckdb"',
         test_requires='numpy',
-        output_dir='wheels',
+        output_dir=Path(__file__).parent / 'wheels',
         python_versions=[python_version]
     )
 
