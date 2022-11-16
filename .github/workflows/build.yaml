@@ -19,7 +19,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: wheels
-          path: *.whl
+          path: '*.whl'
 
   upload:
     runs-on: ubuntu-latest
